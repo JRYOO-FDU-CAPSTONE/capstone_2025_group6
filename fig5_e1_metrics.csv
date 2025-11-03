@@ -1,0 +1,7 @@
+tau,PeakDT_% ,MedianDT_% ,HitRate_% ,metrics_file
+0.0,146.1677836060702,17.34163752913426,8.37146566992064,runs/example/e1_tau_0.0/rejectx-ap-1_0.508154_lru_366.475GB/full_0_0.1_cache_perf.txt.lzma
+0.5,146.1677836060702,17.34163752913426,8.37146566992064,runs/example/e1_tau_0.5/rejectx-ap-1_0.508154_lru_366.475GB/full_0_0.1_cache_perf.txt.lzma
+1.0,146.1677836060702,17.34163752913426,8.37146566992064,runs/example/e1_tau_1.0/rejectx-ap-1_0.508154_lru_366.475GB/full_0_0.1_cache_perf.txt.lzma
+2.0,146.1677836060702,17.34163752913426,8.37146566992064,runs/example/e1_tau_2.0/rejectx-ap-1_0.508154_lru_366.475GB/full_0_0.1_cache_perf.txt.lzma
+4.0,146.1677836060702,17.34163752913426,8.37146566992064,runs/example/e1_tau_4.0/rejectx-ap-1_0.508154_lru_366.475GB/full_0_0.1_cache_perf.txt.lzma
+8.0,146.1677836060702,17.34163752913426,8.37146566992064,runs/example/e1_tau_8.0/rejectx-ap-1_0.508154_lru_366.475GB/full_0_0.1_cache_perf.txt.lzma

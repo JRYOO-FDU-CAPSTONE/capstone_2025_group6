@@ -1,0 +1,108 @@
+Logging to tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599.out
+2025-10-20 15:10:52> Cmd for rerun: bcachesimrun_py.sh py -B -m episodic_analysis.train --exp example --policy PolicyUtilityServiceTimeSize2 --region Region1 --sample-ratio 0.1 --sample-start 0 --trace-group 201910 --supplied-ea physical --target-wrs 34 50 100 75 20 10 60 90 30 --target-csizes 366.475 --output-base-dir runs/example/baleen --eviction-age 5892.856 --rl-init-kwargs filter_=prefetch --train-target-wr 35.599 --train-models admit prefetch --train-split-secs-start 0 --train-split-secs-end 86400 --ap-acc-cutoff 15 --ap-feat-subset meta+block+chunk
+2025-10-20 15:10:52> Files to generate
+2025-10-20 15:10:52> analysis runs/example/baleen/example/201910_Region1_0_0.1/offline_analysis_ea_5892.86.csv 
+2025-10-20 15:10:52> thresholds tmp/example/201910_Region1_0_0.1/decisions_utility_service_time_size_fixed_ea_5892.86.pkl.bz 
+2025-10-20 15:10:52> model_prefetch_offset_start tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_prefetch_offset_start.model 
+2025-10-20 15:10:52> model_prefetch_size tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_prefetch_size.model 
+2025-10-20 15:10:52> model_prefetch_offset_end tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_prefetch_offset_end.model 
+2025-10-20 15:10:52> model_prefetch_pred_net_pf_st_binary tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_prefetch_pred_net_pf_st_binary.model 
+2025-10-20 15:10:52> model_admit_threshold_binary tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_admit_threshold_binary.model 
+2025-10-20 15:10:52> trace_kwargs: {'region': 'Region1', 'sample_ratio': 0.1, 'start': 0.0, 'trace_group': '201910', 'only_gets': True, 'min_ts_from_start': 0.0, 'max_ts_from_start': 86400.0, 'get_features': True}
+2025-10-20 15:10:52> Reading from file data/tectonic/201910/Region1/full_0_0.1.trace
+2025-10-20 15:10:52> Trace details: Duration=86401.23277902603, Start=1572074461.57806, End=1572160862.810839, NumAccesses=17987
+2025-10-20 15:10:52> res_fn_kwargs: {'workers': 8, 'residency_fn': <function process_obj_chunk_n_noprefetch_w_accs at 0x118d5b910>, 'residencylist_class': <class 'BCacheSim.episodic_analysis.episodes.ResidencyListPrefetchAware'>}
+2025-10-20 15:10:52> Primary targets only
+2025-10-20 15:10:57>    Assumed Eviction Age (s)  Target Write Rate  Target Cache Size  Service Time Saved Ratio  IOPSSavedRatio  Write Rate (MB/s)  Cache Size (GB)  Mean Time In System (s)  Episodes admitted  Cutoff score      Target
+2025-10-20 15:10:57> 0                  5892.856                NaN            366.475                  0.515065        0.581753          24.138834       366.902735             15564.480198                498      0.003161  Cache Size
+2025-10-20 15:10:57> 0                  5892.856               34.0                NaN                  0.544200        0.613665          34.053334       456.093883             13714.960846                638      0.002127  Write Rate
+2025-10-20 15:10:57> Others
+2025-10-20 15:10:57>    Assumed Eviction Age (s)  Target Write Rate  Target Cache Size  Service Time Saved Ratio  IOPSSavedRatio  Write Rate (MB/s)  Cache Size (GB)  Mean Time In System (s)  Episodes admitted  Cutoff score                      Target
+2025-10-20 15:10:57> 0                  5892.856                NaN            366.475                  0.515065        0.581753          24.138834       366.902735             15564.480198                498      0.003161                  Cache Size
+2025-10-20 15:10:57> 0                  5892.856         295.827666                NaN                  0.645137        0.770890         295.827666      2084.838698              7216.616547               4121     -0.006925              Max Write Rate
+2025-10-20 15:10:57> 0                  5892.856         154.763417                NaN                  0.645602        0.769055         154.763417      1273.019727              8422.999618               2030      0.000019   Max Write Rate (No waste)
+2025-10-20 15:10:57> 0                  5892.856         295.827666                NaN                  0.645137        0.770890         295.827666      2084.838698              7216.616547               4121     -0.006925  Max Write Rate (Not empty)
+2025-10-20 15:10:57> 0                  5892.856          34.000000                NaN                  0.544200        0.613665          34.053334       456.093883             13714.960846                638      0.002127                  Write Rate
+2025-10-20 15:10:57> 1                  5892.856          50.000000                NaN                  0.578253        0.651915          50.061496       588.446790             12036.586144                834      0.001547                  Write Rate
+2025-10-20 15:10:57> 2                  5892.856         100.000000                NaN                  0.630011        0.722299         100.002913       955.695658              9786.038428               1421      0.000539                  Write Rate
+2025-10-20 15:10:57> 3                  5892.856          75.000000                NaN                  0.609445        0.683160          75.042332       786.372809             10730.553465               1140      0.001054                  Write Rate
+2025-10-20 15:10:57> 4                  5892.856          20.000000                NaN                  0.499783        0.558959          20.037330       332.235623             16978.773163                425      0.004146                  Write Rate
+2025-10-20 15:10:57> 5                  5892.856          10.000000                NaN                  0.440463        0.481070          10.007091       212.469931             21741.504011                254      0.008635                  Write Rate
+2025-10-20 15:10:57> 6                  5892.856          60.000000                NaN                  0.592313        0.673264          60.055567       665.459381             11346.665149                970      0.001104                  Write Rate
+2025-10-20 15:10:57> 7                  5892.856          90.000000                NaN                  0.624182        0.704342          90.072500       897.515557             10203.513120               1312      0.000585                  Write Rate
+2025-10-20 15:10:57> 8                  5892.856          30.000000                NaN                  0.534164        0.599766          30.001019       422.670042             14426.647549                572      0.002595                  Write Rate
+2025-10-20 15:10:57> Episode filter: prefetch
+2025-10-20 15:10:57> #Episodes: 4121, #Accesses: 17987
+2025-10-20 15:10:57> Training model for offset_start
+2025-10-20 15:10:57> Training model for size
+2025-10-20 15:10:59> Training model for offset_end
+2025-10-20 15:11:00>             MSE        R2  Threshold         Label Subset
+2025-10-20 15:11:01> 0  8.382353e+11  0.491309        0.5  offset_start  Train
+2025-10-20 15:11:01> 1  8.318260e+11  0.414649        0.5  offset_start   Test
+2025-10-20 15:11:01> 2  4.021047e+12  0.677590        0.5          size  Train
+2025-10-20 15:11:01> 3  4.745310e+12  0.643095        0.5          size   Test
+2025-10-20 15:11:01> 4  3.284551e+12  0.711267        0.5    offset_end  Train
+2025-10-20 15:11:01> 5  3.857081e+12  0.690746        0.5    offset_end   Test
+2025-10-20 15:11:01> Training model for pred_net_pf_st_binary
+2025-10-20 15:11:01> Training model for pf_benefit
+2025-10-20 15:11:01> Training model for pred_pf_benefit
+2025-10-20 15:11:02> Training model for pred_net_pf_st
+2025-10-20 15:11:03>             MSE        R2  Threshold                  Label Subset     TN   FP   FN   TP  TPR  TNR  FN/FP  Accuracy
+2025-10-20 15:11:04> 0  8.382353e+11  0.491309        0.5           offset_start  Train    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 1  8.318260e+11  0.414649        0.5           offset_start   Test    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 2  4.021047e+12  0.677590        0.5                   size  Train    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 3  4.745310e+12  0.643095        0.5                   size   Test    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 4  3.284551e+12  0.711267        0.5             offset_end  Train    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 5  3.857081e+12  0.690746        0.5             offset_end   Test    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 0  1.955743e-02  0.000000        0.5  pred_net_pf_st_binary  Train  442.0  0.0  9.0  0.0  0.0  1.0    inf  0.980044
+2025-10-20 15:11:04> 1  1.029605e-02 -0.009120        0.5  pred_net_pf_st_binary   Test  192.0  0.0  2.0  0.0  0.0  1.0    inf  0.989691
+2025-10-20 15:11:04> 2  2.178158e-03  0.624821        0.5             pf_benefit  Train    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 3  3.282416e-03  0.559523        0.5             pf_benefit   Test    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 4  2.571310e-05  0.055978        0.5        pred_pf_benefit  Train    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 5  8.095538e-06  0.053024        0.5        pred_pf_benefit   Test    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 6  4.861981e-05  0.293522        0.5         pred_net_pf_st  Train    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> 7  4.630041e-05  0.223136        0.5         pred_net_pf_st   Test    NaN  NaN  NaN  NaN  NaN  NaN    NaN       NaN
+2025-10-20 15:11:04> Source Episodes: 4121, Used Episodes: 4121
+2025-10-20 15:11:06> Rows: 11227, Train: 7925, Test: 3302
+2025-10-20 15:11:07> count     11227
+2025-10-20 15:11:09> unique        2
+2025-10-20 15:11:09> top       False
+2025-10-20 15:11:09> freq       6236
+2025-10-20 15:11:09> Name: threshold_binary, dtype: object
+2025-10-20 15:11:09> 4991
+2025-10-20 15:11:09> Training threshold_binary
+2025-10-20 15:11:09> ['feat_metadata|op', 'feat_metadata|ns', 'feat_metadata|user', 'feat_metadata_size|start', 'feat_metadata_size|end', 'feat_metadata_size|size', 'feat_dynamic_b|0', 'feat_dynamic_b|1', 'feat_dynamic_b|2', 'feat_dynamic_b|3', 'feat_dynamic_b|4', 'feat_dynamic_b|5', 'feat_dynamic_c_combined|0', 'feat_dynamic_c_combined|1', 'feat_dynamic_c_combined|2', 'feat_dynamic_c_combined|3', 'feat_dynamic_c_combined|4', 'feat_dynamic_c_combined|5']
+2025-10-20 15:11:22> Labels: ['threshold_binary']
+2025-10-20 15:11:22> threshold_binary
+2025-10-20 15:11:22> 	feat_dynamic_c_combined|5: 230
+2025-10-20 15:11:22> 	feat_dynamic_c_combined|4: 315
+2025-10-20 15:11:22> 	feat_dynamic_b|4: 474
+2025-10-20 15:11:22> 	feat_dynamic_b|5: 528
+2025-10-20 15:11:22> 	feat_dynamic_b|3: 571
+2025-10-20 15:11:22> 	feat_dynamic_b|2: 607
+2025-10-20 15:11:22> 	feat_dynamic_c_combined|3: 617
+2025-10-20 15:11:22> 	feat_dynamic_c_combined|2: 786
+2025-10-20 15:11:22> 	feat_dynamic_c_combined|1: 1174
+2025-10-20 15:11:22> 	feat_dynamic_b|1: 1465
+2025-10-20 15:11:22> 	feat_metadata|op: 1742
+2025-10-20 15:11:22> 	feat_metadata_size|start: 3726
+2025-10-20 15:11:22> 	feat_dynamic_b|0: 3800
+2025-10-20 15:11:22> 	feat_dynamic_c_combined|0: 5678
+2025-10-20 15:11:22> 	feat_metadata|user: 7253
+2025-10-20 15:11:22> 	feat_metadata|ns: 7385
+2025-10-20 15:11:22> 	feat_metadata_size|size: 7840
+2025-10-20 15:11:22> 	feat_metadata_size|end: 7889
+2025-10-20 15:11:22>         MSE        R2    TN   FP   FN    TP  ...       TNR     FN/FP  Accuracy  Threshold             Label Subset
+2025-10-20 15:11:22> 0  0.062994  0.745358  4151  217  442  3115  ...  0.950321  2.036866  0.916845        0.5  threshold_binary  Train
+2025-10-20 15:11:22> 1  0.098142  0.600529  1705  163  296  1138  ...  0.912741  1.815951  0.860993        0.5  threshold_binary   Test
+2025-10-20 15:11:22> 
+2025-10-20 15:11:22> [2 rows x 13 columns]
+2025-10-20 15:11:22> Filenames generated:
+2025-10-20 15:11:22> analysis runs/example/baleen/example/201910_Region1_0_0.1/offline_analysis_ea_5892.86.csv 0.00556469M
+2025-10-20 15:11:22> thresholds tmp/example/201910_Region1_0_0.1/decisions_utility_service_time_size_fixed_ea_5892.86.pkl.bz 0.626203M
+2025-10-20 15:11:22> model_prefetch_offset_start tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_prefetch_offset_start.model 0.645838M
+2025-10-20 15:11:22> model_prefetch_size tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_prefetch_size.model 0.623385M
+2025-10-20 15:11:22> model_prefetch_offset_end tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_prefetch_offset_end.model 0.624854M
+2025-10-20 15:11:22> model_prefetch_pred_net_pf_st_binary tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_prefetch_pred_net_pf_st_binary.model 0.00277042M
+2025-10-20 15:11:22> model_admit_threshold_binary tmp/example/201910_Region1_0_0.1/ea_5892.86_wr_35.599_admit_threshold_binary.model 5.51251M
+2025-10-20 15:11:22> 
