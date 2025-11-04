@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+2025-11-03 18:16:08>   File "/Users/James/.pyenv/versions/3.10.13/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+2025-11-03 18:16:08>     return _run_code(code, main_globals, None,
+2025-11-03 18:16:08>   File "/Users/James/.pyenv/versions/3.10.13/lib/python3.10/runpy.py", line 86, in _run_code
+2025-11-03 18:16:08>     exec(code, run_globals)
+2025-11-03 18:16:08>   File "/Users/James/develop/fdu/capstone_2025_group6/BCacheSim/cachesim/simulate_ap.py", line 190, in <module>
+2025-11-03 18:16:08>     sim_cache.simulate_cache_driver(get_parsed_args())
+2025-11-03 18:16:08>   File "/Users/James/develop/fdu/capstone_2025_group6/BCacheSim/cachesim/sim_cache.py", line 1483, in simulate_cache_driver
+2025-11-03 18:16:08>     ap = aps.construct(
+2025-11-03 18:16:08>   File "/Users/James/develop/fdu/capstone_2025_group6/BCacheSim/cachesim/admission_policies.py", line 1026, in construct
+2025-11-03 18:16:08>     raise NotImplementedError(ap_id)
+2025-11-03 18:16:08> NotImplementedError: AcceptAll
+2025-11-03 18:16:08> 

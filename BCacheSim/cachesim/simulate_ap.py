@@ -165,13 +165,6 @@ def get_parser():
     parser.add_argument("--log-episodes",
                         help="Log stats for each episode. Warning: VERY VERY large file.",
                         action="store_true")
-    parser.add_argument('--dt_slru_tau', type=float, default=1.0,
-                        help='Promotion threshold τ_DT for DT-SLRU')
-    parser.add_argument('--ede_protected_cap', type=float, default=0.25,
-                        help='EDE: max fraction of cache reserved for Protected segment')
-    parser.add_argument('--ede_alpha_tti', type=float, default=0.70,
-                        help='EDE: EWMA smoothing for time-to-idle (0..1, higher adapts faster)')
-
     return parser
 
 

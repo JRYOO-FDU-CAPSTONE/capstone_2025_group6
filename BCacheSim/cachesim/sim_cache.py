@@ -28,7 +28,6 @@ from .ep_helpers import Timestamp
 from .ep_helpers import record_service_time_get
 from .ep_helpers import record_service_time_put
 from .ep_helpers import AccessPlus
-from .eviction_policies import EpisodeDeadlineEvictionPolicy
 
 
 CACHE_LOCATIONS = {
