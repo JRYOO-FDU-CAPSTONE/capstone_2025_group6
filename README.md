@@ -3,11 +3,11 @@
 Group Number: 6
 
 Members:
-Xiaoyi Han	2133542	x.han1@student.fdu.edu
-Kaiwen Wang	2073512	k.wang4@student.fdu.edu
-Ziyan Qiu	2089937	z.qiu1@student.fdu.edu
-Hongyi Niu	2104640	h.niu@student.fdu.edu
-Jun Tang	2111172	j.tang4@student.fdu.edu
+-- Jun Tang	2111172	j.tang4@student.fdu.edu
+-- Xiaoyi Han	2133542	x.han1@student.fdu.edu
+-- Kaiwen Wang	2073512	k.wang4@student.fdu.edu
+-- Ziyan Qiu	2089937	z.qiu1@student.fdu.edu
+-- Hongyi Niu	2104640	h.niu@student.fdu.edu
 ---
 
 ## System Requirements
