@@ -39,6 +39,30 @@ Step 3 – Clone repository (if not already in this repo)
     git clone https://github.com/JRYOO-FDU-CAPSTONE/capstone_2025_group6.git
     cd capstone_2025_group6
 
+
+## Requirements.txt
+lightgbm==3.3.5
+numpy==1.24.2
+pandas==1.5.3
+scikit-learn==1.2.2
+spookyhash
+jsonargparse
+compress_json
+compress_pickle
+commentjson
+retry
+psutil
+tqdm
+scipy==1.10.1
+redis
+matplotlib==3.7.1
+seaborn==0.12.1
+pqdict
+ipywidgets
+jupyterlab
+
+
+
 All commands above have been tested from a fresh clone.
 
 ---
