@@ -107,6 +107,37 @@ Eviction Policy Comparison
 
 ## Validation Checklist
 
+The following tests verify that the artifact runs correctly and produces expected outputs.  
+Each test includes both the command to run and the expected result.
+
+Test 1 – Basic E1 experiment executes successfully
+    Command:
+        python scripts/e1.py
+    Expected Output:
+        - Script finishes without errors
+        - Generates an output metrics file in CSV or JSON format
+        - Runtime metrics (e.g., hit rate, latency) appear in the console or output file
+
+Test 2 – Metrics extraction produces a valid table
+    Command:
+        python scripts/extract_from_out.py
+    Expected Output:
+        - A metrics table file is created (CSV or JSON)
+        - Table includes fields such as: request_count, hit_rate, avg_latency
+        - No missing or null values in the generated table
+
+Test 3 – Figure 6 reproduction produces valid PNG/PDF plot
+    Command:
+        python scripts/fig6.py
+    Expected Output:
+        - A plot file named similar to "fig6_e2_peakdt_vs_cap_final.png" is created in the scripts/ or figs/ directory
+        - Visualization shows the PeakDT vs Capacity curve
+        - Figure is readable and matches expected shape from A7 report
+
+
+
+## Validation Checklist
+
 Test 1 – Peak DT computation
     python scripts/e1.py
 
