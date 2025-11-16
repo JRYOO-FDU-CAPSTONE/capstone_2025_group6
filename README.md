@@ -66,6 +66,35 @@ jupyterlab
 All commands above have been tested from a fresh clone.
 
 ---
+## Reproduction Instructions
+
+The following commands reproduce the figures and tables used in our A7 submission.  
+All commands are runnable from the repository root with the virtual environment activated.
+
+Figure 1 – Experiment E1 baseline results
+    python scripts/e1.py
+
+Figure 2 – Generate metrics table from experiment outputs
+    python scripts/make_metrics.py
+
+Figure 3 – Final version of Figure 3
+    python scripts/run_figure3_finaly.py
+
+Figure 5 – Produce Figure 5 plot
+    python scripts/fig5.py
+
+Figure 6 – Produce final Figure 6 plot
+    python scripts/fig6.py
+
+Table Extraction – Extract metrics from output files
+    python scripts/extract_from_out.py
+
+Optional – Run E1 using provided shell runner
+    bash scripts/run_e1.sh
+
+Optional – Reproduce A5 Figure 3
+    python scripts/run_a5_fig3.py
+
 
 ## Reproducing Results
 
