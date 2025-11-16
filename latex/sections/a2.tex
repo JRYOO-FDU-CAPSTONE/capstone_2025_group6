@@ -1,0 +1,108 @@
+\section{Methodology}
+
+
+\subsection{Artifact and Environment Plan}
+We will follow the official Baleen-FAST 24 Guithub README to setup the environment to reproduce the work in the Baleen paper. The environment will include the pythong codes, data access. The artifact is archived in the github repository:
+
+https://github.com/wonglkd/Baleen-FAST24.
+
+The repository has the frozen code to reproduce simulated experiments done in the paper. and data download scripts, and jupyter notebooks for producing the results and plots. 
+
+The instructions are documented in the repository's README.MD, which provides details about: getting start guidance, experiment walkthrough, pointers to notebooks that plot paper figures, and directory structure.  
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{0.95\linewidth}|}
+\hline
+\textbf{Repository URL:} \url{https://github.com/wonglkd/Baleen-FAST24} \\
+\hline
+\textbf{Intended Commit ID:} To be pinned later (currently unknown) \\
+\hline
+\textbf{Target Notebooks:}
+\texttt{chameleon/1-getting-started.ipynb};
+\texttt{chameleon/2-start-dedicated-server.ipynb};
+\texttt{notebooks/example/example.ipynb};
+\texttt{notebooks/paper-figs/fig-01bc,17-202309.ipynb};
+\texttt{notebooks/reproduce/commands.ipynb} \\
+\hline
+\textbf{Directory Paths:} \texttt{data/}, \texttt{runs/}, \texttt{tmp/}, \texttt{notebooks/}, \texttt{notebooks/figs/} \\
+\hline
+\end{tabular}
+\caption{Artifact and environment plan for Baleen-FAST24.}
+\end{table}
+
+
+
+\subsection{Repository Scope \& Terminology}
+\textbf{Scope.}
+We will use the public parts of Baleen-FAST24: the Chameleon simulator and the set of Jupyter notebooks enumerated in the artifact table in \S1.1. We will follow the default folders (\texttt{data/}, \texttt{runs/}, \texttt{tmp/}, \texttt{notebooks/}, \texttt{notebooks/figs/}). The exact code version is the one pinned in \S1.1. Out of Scope: Anything not in the public repo is out of scope (internal testbed pieces, private traces, kernel/filesystem changes, cloud orchestration). Since A3 is a plan, we also omit install/build commands.
+
+\textbf{Assumptions.}
+Our default setting is an HDD-backed flash cache with single-node simulation. We use offline training with a simple temporal split (train on earlier windows, evaluate on later windows), and enable coordinated ML prefetch when running Baleen.
+
+\textbf{Terminology (aligned with A1/A2).}
+\emph{DT}: backend disk service-time proxy we aim to reduce.
+\emph{Peak DT}: tail/peak DT over an evaluation window.
+\emph{Episode}: accesses to the same block grouped by LRU eviction age; used for OPT labels and imitation.
+\emph{OPT}: oracle admission over episodes (uses future knowledge) to produce training labels for Baleen.
+\emph{Segment granularity}: decision/accounting granularity (block/chunk/meta-feature level).
+\emph{Service time}: per-miss backend latency linked to DT/Peak~DT.
+\emph{Flash write rate}: sustained write budget/constraint; a control knob in Baleen--TCO studies.
+\emph{Cache hit rate} (diagnostic): secondary indicator to interpret DT changes; not the primary objective.
+
+
+
+
+
+
+\subsection{Planned Policies and Training}
+
+We plan to look at two caching policies. The first one is the baseline
+admission rule from the artifact notebooks. It is just a simple
+frequency or recency based rule and has no prefetch. We use this as
+our control so we know how much gain we get with ML admission.
+The second one is the Baleen ML policy. We will train admission by
+OPT imitation on episodes, same as in the Baleen paper~\cite{wong2024baleen}. This policy runs with coordinated prefetch and keeps a flash write-rate budget. The goal is to make DT smaller. Later we will try the model on a different part of the trace to see if it still works well.
+
+Training will be offline. We split the trace by time: the early part for
+making episodes and labels, the later part for testing. This is so the model does not see future data by mistake. For now we just run the artifact scripts since they already handle episode creation and training. For features we start with everything: meta (request size, type),
+block (recency, frequency) and chunk (reuse distance, prefetch
+hints). If we still have time, we might drop some of them, like meta-only, and see what happens to DT.
+
+Hyperparameters will follow the defaults first. After we get one model
+trained, we may try small changes, like making the learning rate half
+or double, just to check if training improves. We keep the model that
+makes DT smallest while staying under the write budget.
+
+
+\subsection{Planned Workloads and Temporal Splits}
+We will start with the Getting Started subset. This will help us check that the pipeline works. We will test episode creation, OPT label generation, model training, and DT extraction. After that, we will move on to other public subsets used in the artifact notebooks. We will pick at least one trace that has many small random reads, and one trace that has large or streaming reads. This will help us see different effects on DT and Peak DT.
+
+The training will be offline. We will split the trace by time. We use the early part to create training data, and we use the later part to test. This helps us avoid using future data by mistake. We will use the default settings from the notebooks. We will also follow the same split method as the paper. This helps us get results that match the Baleen setup. As a non-ML control, we use a recency/frequency baseline in the spirit of classic adaptive policies (e.g., ARC) before enabling Baleen’s ML admission.” \cite{megiddo2003arc}.
+
+
+\subsection{Metric Definitions}
+
+In this subsection, we will define and plan the metrics.
+
+\textbf{Disk-head Time (DT) and Peak DT:}
+DT represents the total time spent by an HDD head to handle missed requests in the flash cache, including the search, rotation and data transfer times. Peak DT represents the backend load in the worst-case scenario, the peaks of DT observed in a set of evaluation time Windows.
+Reducing DT, especially the peak DT, can directly optimize efficiency at the back end of the HDD, ensure stable I/O performance, and reduce delay.
+We will use the notebooks provided by artifact to obtain the DT and peak DT indicators, following the methods in the paper to calculate DT and peak DT from log data.
+
+\textbf{Flash write Rate:}
+In subsequent experiments, we will adjust different target flash write rates to observe changes in back-end performance (such as peak DT) under different endurance by following the Balene-TCO methodology. We prioritize the flash write-rate first as \cite{eisenman2019flashield} shows that effective admission can save flash wear without sacrifing performance. 
+
+\textbf{Estimated TCO trendlines:}
+The estimated TCO trend line will conceptually demonstrate the trade-off between cost and performance. We will link the write rates of different target flash memory with back-end performance (such as peak DT) and expected hardware costs, indicating that increasing the write rate may reduce peak DT, meanwhile, cost flash memory wear and overall costs.
+
+\textbf{Cache hit rate:}
+Cache hit rate measures the proportion of requests processed directly from the flash cache instead of the HDD back-end. It is like a diagnostic indicator because a high hit rate does not necessarily mean a lower DT. Sometimes even a small number of misses may cause a significant backend load, thereby increasing DT. \cite{beckmann2018lhd} also suggest not just aggregate hits.
+
+
+\subsection{Analysis and Reporting Plan}
+
+After we finish running the workloads, we will collect the DT and Peak DT numbers from each test window. We will report the median and IQR for these numbers. After that, we will repeat the test with different random seeds and add confidence intervals. We will compare Baseline and Baleen. Our focus is on peak DT. We will also report the cache hit rate. We will check that all runs stay under the given flash write rate. We will check that all runs stay under the given flash write rate. We will also write down how well each policy meets the write budget. This helps us see how faster speed may use more flash writes.
+
+We also plan to test different flash write rates and cache sizes. This will help us understand how performance changes. We will draw charts like “Peak DT vs write rate” and “Peak DT vs cache size”. If possible, we will also run tests without prefetch to compare results. If we have time, we will try simpler feature sets to see how that affects DT. This strategry also mirror \cite{berg2020cachelib}.
+
